@@ -5,10 +5,10 @@ own intergalactic units. Given the definition of each symbol and the intergalact
 questions about the number and quantities.
 
 For example -
-  abcd is I
-  bcde is V
-  cdef is X
-  abcd abcd Silver is 55 Metal
-  how much is abcd abcd ?
-  how many Metails is bcde Silver ?
+-abcd is I
+-bcde is V
+-cdef is X
+-abcd abcd Silver is 55 Metal
+-how much is abcd abcd ?
+-how many Metails is bcde Silver ?
 
