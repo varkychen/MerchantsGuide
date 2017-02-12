@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="MerchantsGuideToTheGalaxy" default="install" basedir=".">
+
+    <property name="src" location="src" />
+    <property name="build" location="build" />
+    <property name="bin" location="${build}/bin" />
+    <property name="test.bin" location="${build}/test" />
+    <property name="install" location="install" />
+    <property name="test" location="test" />
+    <property name="lib" location="lib" />
+    
+    <path id="classpath">
+        <dirset dir="${bin}" />
+        <fileset dir="${lib}" includes="**/*.jar" />
+    </path>
+    
+    <target name="clean">
+        <delete dir="${install}" />
+        <delete dir="${build}" />
+    </target>
+    
+    
+    <target name="build">
+        <mkdir dir="${bin}" />
+        <javac includeantruntime="false" srcdir="${src}" destdir="${bin}" />
+    </target>
+
+    
+    <target name="test" depends="build">
+        <junit printsummary="yes" showoutput="on" filtertrace="off" fork="true">
+            <classpath>
+                <path refid="classpath"/>
+            </classpath>
+            
+            <batchtest fork="yes" todir="${test}">
+                <fileset dir="${test}" includes="**/*Test.java"/>
+            </batchtest>
+        </junit>
+    </target>
+
+
+    <target name="install" depends="test">
+        <mkdir dir="${install}" />
+        <jar jarfile="${install}/merchants-guide.jar" basedir="${build}/bin">
+            <manifest>
+                <attribute name="Main-Class" value="hello.HelloWorld"/>
+            </manifest>
+        </jar>
+    </target>
+</project>
